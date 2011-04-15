@@ -17,4 +17,14 @@ describe Ruby do
   it "knows its CPU architecture" do
     Ruby.arch.should == Config::CONFIG['host_cpu']
   end
+  
+  it "knows the path to the Ruby interpreter" do
+    path = Ruby.path
+    
+    File.executable?(path).should be_true
+    
+    # Let's give it some Ruby to execute!
+    result = `#{path} -e 'p 40.send(:+, 2)'`.to_i
+    result.should == 42
+  end
 end

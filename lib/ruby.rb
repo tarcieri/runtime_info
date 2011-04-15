@@ -1,5 +1,10 @@
 require 'rbconfig'
 
+# DON'T REQUIRE RUBYGEMS!!! Actually I'm using a feature of Rubygems there,
+# so unless you're keen on reimplementing Ruby.path yourself and sending
+# me a pull request, please don't complain.
+require 'rubygems'
+
 # Interfaces to various Ruby virtual machine and platform specifics
 module Ruby
   module_function # a convoluted shortcut to avoid any << crap or self. shit
@@ -16,4 +21,7 @@ module Ruby
     return RUBY_ENGINE if defined? RUBY_ENGINE
     'ruby'
   end
+  
+  # Path to the Ruby interpreter currently in use
+  def path; Gem.ruby; end
 end
