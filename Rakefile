@@ -15,8 +15,14 @@ Jeweler::Tasks.new do |gem|
   gem.name = "therubygem"
   gem.homepage = "http://github.com/tarcieri/therubygem"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "The 'ruby' gem: Sane interfaces to information about the Ruby environment"
+  gem.description = <<-rofl
+Getting information about the current Ruby environment can be a bit arcane.
+Lots of solutions exist in the form of various globals, things like
+Config::CONFIG, and various other oddities. This gem tries to bring it all
+together and make it sane.
+rofl
+
   gem.email = "tony@medioh.com"
   gem.authors = ["Tony Arcieri"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
