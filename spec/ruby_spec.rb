@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rbconfig'
 
 describe Ruby do
   it "knows its engine" do
@@ -11,5 +12,9 @@ describe Ruby do
   
   it "knows its platform" do
     Ruby.platform.should == RUBY_PLATFORM
+  end
+  
+  it "knows its CPU architecture" do
+    Ruby.arch.should == Config::CONFIG['host_cpu']
   end
 end
