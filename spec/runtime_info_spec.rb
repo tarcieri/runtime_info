@@ -1,25 +1,29 @@
 require 'spec_helper'
 require 'rbconfig'
 
-describe Ruby do
+describe Runtime do
   it "knows its engine" do
     if defined? RUBY_ENGINE
-      Ruby.engine.should == RUBY_ENGINE
+      Runtime.engine.should == RUBY_ENGINE
     else
-      Ruby.engine.should == 'ruby'
+      Runtime.engine.should == 'ruby'
     end
   end
   
   it "knows its platform" do
-    Ruby.platform.should == RUBY_PLATFORM
+    Runtime.platform.should == RUBY_PLATFORM
   end
   
   it "knows its CPU architecture" do
-    Ruby.arch.should == Config::CONFIG['host_cpu']
+    Runtime.arch.should == Config::CONFIG['host_cpu']
+  end
+  
+  it "knows its OS" do
+    Runtime.os.should == Config::CONFIG['host_os']
   end
   
   it "knows the path to the Ruby interpreter" do
-    path = Ruby.path
+    path = Runtime.path
     
     File.executable?(path).should be_true
     

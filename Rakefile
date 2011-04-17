@@ -12,10 +12,10 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "therubygem"
-  gem.homepage = "http://github.com/tarcieri/therubygem"
+  gem.name = "runtime_info"
+  gem.homepage = "http://github.com/tarcieri/runtime_info"
   gem.license = "MIT"
-  gem.summary = "The 'ruby' gem: Sane interfaces to information about the Ruby environment"
+  gem.summary = "Sane interfaces to information about the Ruby runtime environment"
   gem.description = <<-rofl
 Getting information about the current Ruby environment can be a bit arcane.
 Lots of solutions exist in the form of various globals, things like
@@ -50,7 +50,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "therubygem #{version}"
+  rdoc.title = "runtime_info #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
