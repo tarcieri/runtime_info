@@ -10,6 +10,11 @@ describe Runtime do
     end
   end
   
+  it "knows the engine version" do
+    # Don't really know how to test this :(
+    Runtime.version.should match(/\d(.\d){2}/)
+  end
+  
   it "knows its platform" do
     Runtime.platform.should == RUBY_PLATFORM
   end

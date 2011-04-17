@@ -25,6 +25,16 @@ module Runtime
     'ruby'
   end
   
+  # Version of the Ruby virtual machine in use
+  def version
+    case engine
+    when 'ruby'  then RUBY_VERSION
+    when 'jruby' then JRUBY_VERSION
+    when 'rbx'   then Rubinius::VERSION
+    else raise "don't know how to obtain version for #{engine}"
+    end
+  end
+  
   # Path to the Ruby interpreter currently in use
   def path; Gem.ruby; end
 end
