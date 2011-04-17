@@ -14,10 +14,25 @@ module Runtime
   
   # Host CPU architecture
   def arch; Config::CONFIG['host_cpu']; end
-  alias_method :cpu_architecture, :arch
+  def cpu_architecture; arch; end
+  
+  # Number of physical CPU cores
+  def ncpus
+    case os
+    when 'darwin'
+      Integer(`hwprefs cpu_count`)
+    when 'linux'
+      cores = File.read("/proc/cpuinfo").scan(/core id\s+: \d+/).uniq.size
+      cores > 0 ? cores : 1
+    else raise "don't know how to determine CPU count on #{os}"
+    end
+  end
+  def cpu_count; ncpus; end
   
   # Host OS
-  def os; Config::CONFIG['host_os']; end
+  def os
+    Config::CONFIG['host_os'][/^[A-Za-z]+/]
+  end
   
   # Ruby virtual machine in use
   def engine

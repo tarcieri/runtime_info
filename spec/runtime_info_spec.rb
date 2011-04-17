@@ -23,8 +23,12 @@ describe Runtime do
     Runtime.arch.should == Config::CONFIG['host_cpu']
   end
   
+  it "knows the number of CPUs" do
+    Runtime.ncpus.should be > 0
+  end
+  
   it "knows its OS" do
-    Runtime.os.should == Config::CONFIG['host_os']
+    Runtime.os.should == Config::CONFIG['host_os'][/^[A-Za-z]+/]
   end
   
   it "knows the path to the Ruby interpreter" do
